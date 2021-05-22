@@ -1,6 +1,9 @@
-// For assistance:
-// Check the "Project Resources" section of the project instructions
-// Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
+/***
+ * selectors
+ ***/
+const quote = document.querySelector(".quote");
+const source = document.querySelector(".source");
+const citation = document.querySelector(".citation");
 
 /***
  * `quotes` array
@@ -94,15 +97,29 @@ console.log(quotes);
  * `getRandomQuote` function
  ***/
 
+let random = Math.floor(Math.random() * quotes.length);
+
+function getRandomQuote(arr) {
+  // Number between 0 and length of quotes array
+  return arr[random].quote;
+}
+
+console.log(random);
+console.log(getRandomQuote(quotes));
+
 /***
  * `printQuote` function
  ***/
+function printQuote(arr) {
+  let randomQuote = getRandomQuote(quotes);
+  quote.innerHTML = randomQuote;
+}
 
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
  ***/
 
-// document
-//   .getElementById("load-quote")
-//   .addEventListener("click", printQuote, false);
+document
+  .getElementById("load-quote")
+  .addEventListener("click", printQuote, false);
