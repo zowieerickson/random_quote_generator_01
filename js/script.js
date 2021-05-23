@@ -147,6 +147,7 @@ const quotes = [
  * `colors` array
  ***/
 const colors = [
+  "rgb(58, 193, 98)",
   "#3b1f2b",
   "#db162f",
   "#dbdfac",
@@ -160,6 +161,11 @@ const colors = [
   "#b4d2ba",
   "#e2856e",
   "#88A2AA",
+  "#e2856e",
+  "#e3f09b",
+  "#f7d08a",
+  "#87b6a7",
+  "#5b5941",
 ];
 
 function getRandomColor(arr) {
@@ -184,15 +190,16 @@ function getRandomQuote(arr) {
 /***
  * timers
  ***/
-let quoteTimer = setInterval(printQuote, 20000);
-let colorTimer = setInterval(displayRandomColor, 20000);
+let timers = setInterval(function () {
+  printQuote();
+  displayRandomColor();
+}, 20000);
 
 /***
  * `printQuote` function
  ***/
 function printQuote() {
   let randomQuote = getRandomQuote(quotes);
-  console.log(randomQuote.quote);
 
   let html = `
   <p class="quote">${randomQuote.quote}</p>
@@ -220,11 +227,11 @@ function printQuote() {
   </p>`;
   quoteBox.innerHTML = html;
 
-  clearInterval(colorTimer);
-  clearInterval(quoteTimer);
-  quoteTimer = setInterval(printQuote, 20000);
-  colorTimer = setInterval(displayRandomColor, 20000);
-  console.log(citation.innerHTML);
+  clearInterval(timers);
+  timers = setInterval(function () {
+    printQuote();
+    displayRandomColor();
+  }, 20000);
 }
 
 /***
