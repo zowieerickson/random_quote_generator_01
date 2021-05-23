@@ -105,6 +105,21 @@ h1 {
   font-style: normal;
 }
 
+.tag {
+  padding-top: 1rem;
+  padding-bottom: 15px;
+  padding-left: 7px;
+  text-align: center;
+  font-size: 0.8rem;
+  display: block;
+  font-style: oblique;
+}
+
+.tag-container {
+  display: flex;
+  justify-content: center;
+}
+
 .year:before {
   content: ", ";
   font-style: normal;
@@ -158,4 +173,8 @@ h1 {
   .source {
     font-size: 1.25rem;
   }
+}
+
+.icon {
+  filter: brightness(0) invert(1);
 }
