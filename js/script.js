@@ -166,24 +166,36 @@ const colors = [
   "#f7d08a",
   "#87b6a7",
   "#5b5941",
+  "#2c0735",
+  "#272932",
+  "#30292f",
+  "#0c090d",
 ];
 
+/********************************************************
+ * Retrieving random color and displaying it
+ ***/
 function getRandomColor(arr) {
+  // finds a random number based on amount of colors in 'colors' array
   let random = Math.floor(Math.random() * colors.length);
+  // returns random color based on its index value, AKA the number from 'random'
   return arr[random];
 }
 
-function displayRandomColor(arr) {
+function displayRandomColor() {
+  // assigns the random color to a variable "randomColor"
   let randomColor = getRandomColor(colors);
+  // change the background color
   body.style.backgroundColor = randomColor;
 }
 
-/***
- * `getRandomQuote` function
+/**********************************************************
+ * Retrieving random color and displaying it
  ***/
 function getRandomQuote(arr) {
-  // Number between 0 and length of quotes array
+  // finds a random number based on number of quote objects in 'quotes' array
   let random = Math.floor(Math.random() * quotes.length);
+  // returns random color based on its index value, AKA the number from 'random'
   return arr[random];
 }
 
@@ -195,8 +207,8 @@ let timers = setInterval(function () {
   displayRandomColor();
 }, 20000);
 
-/***
- * `printQuote` function
+/**********************************************************
+ * print html
  ***/
 function printQuote() {
   let randomQuote = getRandomQuote(quotes);
@@ -205,6 +217,7 @@ function printQuote() {
   <p class="quote">${randomQuote.quote}</p>
   <p class="source">${randomQuote.source}`;
 
+  // if quote obj has citation/year/tag, will display it
   if (randomQuote.citation !== undefined) {
     html += `
     <span class="citation">${randomQuote.citation}</span>`;
@@ -227,6 +240,7 @@ function printQuote() {
   </p>`;
   quoteBox.innerHTML = html;
 
+  // reset the interval timer
   clearInterval(timers);
   timers = setInterval(function () {
     printQuote();
